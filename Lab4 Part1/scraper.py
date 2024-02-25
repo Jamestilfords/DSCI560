@@ -51,14 +51,14 @@ reddit = praw.Reddit(
 )
 
 def create_database():
-    db = mysql.connector.connect(host="localhost", user="root", password="joe")
+    db = mysql.connector.connect(host="localhost", user="root", password="james")
     cursor = db.cursor()
-    cursor.execute("CREATE DATABASE IF NOT EXISTS reddit")
+    cursor.execute("CREATE DATABASE IF NOT EXISTS ScrapeReddit")
     cursor.close()
     db.close()
 
 def create_tables():
-    db = mysql.connector.connect(host="localhost", user="root", password="joe", database="reddit")
+    db = mysql.connector.connect(host="localhost", user="root", password="james", database="ScrapeReddit")
     cursor = db.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS posts (
@@ -74,7 +74,7 @@ def create_tables():
     db.close()
 
 def fetch_and_store_posts(total_posts, posts_per_batch=1000):
-    db = mysql.connector.connect(host="localhost", user="root", password="joe", database="reddit")
+    db = mysql.connector.connect(host="localhost", user="root", password="james", database="ScrapeReddit")
     cursor = db.cursor()
 
     cursor.execute("TRUNCATE TABLE posts")
